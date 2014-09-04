@@ -1,12 +1,14 @@
 <h4>This is the typeahead exercise</h4>
 
-<input type="text" ng-model="selected" class="form-control" >
-<!-- need to add 2 attributes to input above -->
+<input ng-click="typeahead.getContacts(0)" type="text" ng-model="selected" class="form-control"
+       typeahead="state.name for state in typeahead.data | filter:$viewValue | limitTo:8"
+       typeahead-on-select="typeahead.selectContact($item, $model, $label)">
+
 
 <hr/>
 
 <div ng-if="typeahead.selected">
-    <h4>Selected item</h4>
+<h4>Selected item</h4>
     <ul>
         <li>Id: {{typeahead.selected.id}}</li>
         <li>Name: {{typeahead.selected.name}}</li>
