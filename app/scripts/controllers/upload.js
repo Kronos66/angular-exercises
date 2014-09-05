@@ -9,20 +9,21 @@
  */
 angular.module('ngflowApp').controller('uploadCtrl', function ($scope) {
 
+    var ctrl = this;
     this.flowCompleteFlag = false;
-
     this.image = undefined;
 
     this.startUpload = function(flow,files){
-	// write function body
-    }
+        flow.upload();
+    };
 
     this.fileSuccess = function(file,message){
-	// write function body
-    }
+        ctrl.image = JSON.parse(message);
+//        console.log(ctrl.image.url);
+    };
 
     this.flowComplete=function(){
         this.flowCompleteFlag = true;
-    }
+    };
 
 });
