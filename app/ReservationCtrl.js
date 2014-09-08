@@ -28,7 +28,7 @@
         };
 
         ctrl.formData = {};
-        $scope.$watch(
+
         this.save = function(){
             ctrl.formData = {
                 firstName: ctrl.list.firstName,
@@ -40,7 +40,12 @@
                 date: ctrl.list.date,
                 comments: ctrl.list.comments
             };
-        }, ctrl.save());
+        }
+        $scope.$watch(function () {
+            return ctrl.formData;
+        }, function () {
+            return ctrl.save();
+        })
     }
 
     var module = angular.module('exerciseApp', ["xeditable", 'ui.bootstrap']);
