@@ -54,7 +54,7 @@ angular.module('itcApp').factory('ContactDAO', function ($q) {
         getAll:function(){
             var deferred = $q.defer();
 
-            deferred.resolve([contacts]);
+            deferred.resolve(contacts);
 
             var promise=deferred.promise;
             return promise;

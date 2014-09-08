@@ -1,8 +1,8 @@
 <h4>This is the typeahead exercise</h4>
 
-<input ng-click="typeahead.getContacts(0)" type="text" ng-model="selected" class="form-control"
+<input ng-click="typeahead.getContacts()" type="text" ng-model="selected" class="form-control"
        typeahead="state.name for state in typeahead.data | filter:$viewValue | limitTo:8"
-       typeahead-on-select="typeahead.selectContact($item, $model, $label)">
+       typeahead-on-select="typeahead.selectContact($item)">
 
 
 <hr/>
