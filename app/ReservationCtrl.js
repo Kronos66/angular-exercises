@@ -1,18 +1,20 @@
 (function () {
     'use strict';
-    function ReservationCtrl($filter,$scope) {
+    function ReservationCtrl($scope) {
         var ctrl = this;
-
+        $scope.$watch(function () {
+            return ctrl.list;
+        }, function () {
+            ctrl.save();
+        }, true);
         ctrl.list = {
-            selectRefreshment: {value: ''},
-            selectZone: {value: ''}
+            selectRefreshment: '',
+            selectZone: ''
         };
-
         ctrl.refreshments = [
             {value: 1, status: 'yes'},
             {value: 2, status: 'no'}
         ];
-
         ctrl.zones = [
             {value: 1, color: 'White'},
             {value: 2, color: 'Blue'},
@@ -20,7 +22,6 @@
             {value: 4, color: 'Green'},
             {value: 5, color: 'Black'}
         ];
-
         ctrl.isSummary = false;
         this.showSummary = function () {
             ctrl.isSummary = !ctrl.isSummary;
@@ -38,21 +39,10 @@
                 vip: ctrl.list.vip,
                 date: ctrl.list.date,
                 comments: ctrl.list.comments
-            }
+            };
         }, ctrl.save());
-        ctrl.showStatusRefreshment = function () {
-            var selected = $filter('filter')(ctrl.refreshments, {value: ctrl.list.selectRefreshment});
-            return (ctrl.list.selectRefreshment && selected.length) ? selected[0].status : 'Not set';
-        };
-
-//      Other solution
-//        $scope.$watchCollection('[reservation.list.firstName, reservation.list.lastName,reservation.list.email,reservation.list.selectRefreshment,' +
-//            'reservation.list.selectZone,reservation.list.vip,reservation.list.date,reservation.list.comments]', function () {
-//            ctrl.save()
-//        });
     }
 
-
-    var module = angular.module('exerciseApp', ["xeditable", "ui.bootstrap"]);
-    module.controller('ReservationCtrl', ['$filter','$scope', ReservationCtrl]);
+    var module = angular.module('exerciseApp', ["xeditable", 'ui.bootstrap']);
+    module.controller('ReservationCtrl', ['$scope', ReservationCtrl]);
 })();
