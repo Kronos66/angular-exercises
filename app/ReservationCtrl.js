@@ -9,7 +9,8 @@
         }, true);
         ctrl.list = {
             selectRefreshment: '',
-            selectZone: ''
+            selectZone: '',
+            date: new Date()
         };
         ctrl.refreshments = [
             {value: 1, status: 'yes'},
@@ -41,11 +42,11 @@
                 comments: ctrl.list.comments
             };
         }
-        $scope.$watch(function () {
-            return ctrl.formData;
-        }, function () {
-            return ctrl.save();
-        })
+//        $scope.$watch(function () {
+//            return ctrl.formData;
+//        }, function () {
+//            return ctrl.save();
+//        })
     }
 
     var module = angular.module('exerciseApp', ["xeditable", 'ui.bootstrap']);
