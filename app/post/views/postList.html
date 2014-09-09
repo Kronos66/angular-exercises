@@ -5,7 +5,7 @@
 <form>
     <div class="row">
         <div class="col-xs-9 col-sm-6 form-group">
-            <input type="search" class="form-control" placeholder="Search..."/>
+            <input type="search" class="form-control" ng-model="postList.filter.searchQuery" placeholder="Search..."/>
         </div>
         <div class="col-xs-3 col-sm-6 form-group">
             <a class="btn btn-success pull-right" href="#/details"><i class="glyphicon glyphicon-plus"></i> Add</a>
@@ -32,6 +32,7 @@
         </tr>
         </tbody>
     </table>
+
     <pagination class="pull-right" ng-model="postList.currentPage" total-items="postList.resultCount" items-per-page="postList.filter.maxResults" max-size="5"
                 boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
                 ng-show="postList.isPaginationNeeded()"></pagination>
