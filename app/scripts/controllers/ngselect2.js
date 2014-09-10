@@ -13,14 +13,14 @@ angular.module('ngselect2App').controller('Ngselect2Ctrl', function ($scope, $re
     ctrl.artistModel = [];
 
 
-    ctrl.search = function (query) {
-        Artist.query(query.term).then(function (results) {
+    ctrl.search = function (searchString) {
+        Artist.query(searchString.term).then(function (results) {
             ctrl.artists = results.artist.map(function (artist) {
                 artist.text = artist.name;
                 return  artist;
             });
             var data = { results: ctrl.artists };
-            query.callback(data);
+            searchString.callback(data);
         });
 
     };
@@ -32,8 +32,8 @@ angular.module('ngselect2App').controller('Ngselect2Ctrl', function ($scope, $re
         minimumInputLength: 1,
         maximumInputLength: 10,
         placeholder: "Search for a artist",
-        query: function (query) {
-            ctrl.search(query)
+        query: function (searchString) {
+            ctrl.search(searchString)
         }
     };
 
