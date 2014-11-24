@@ -3,9 +3,25 @@
     'use strict';
     var module = angular.module('exerciseApp', ['ngResource', 'ngRoute']);
 
-    module.config(function ($provide)
+    module.config(function ($provide,$routeProvider)
     {
         $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
+
+        $routeProvider.when('/',{
+            templateUrl:'brainCandyList.html',
+            controller:'BrainCandyListCtrl as brainCandy'
+        });
+        $routeProvider.when('/edit/:id',{
+            templateUrl:'brainCandyDetails.html',
+            controller:'BrainCandyDetailsCtrl as brainCandyDetails'
+        });
+        $routeProvider.when('/delete/:id',{
+            templateUrl:'brainCandyList.html',
+            controller:'BrainCandyListCtrl as brainCandy'
+        });
+        $routeProvider.otherwise({
+            redirectTo: '/'
+        });
     });
 
     module.run(function ($httpBackend)
