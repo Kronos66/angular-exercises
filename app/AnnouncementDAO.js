@@ -2,10 +2,18 @@
 {
     'use strict';
 
-    function AnnouncementDAO()
+    function AnnouncementDAO($resource)
     {
+        var api=$resource('/api/announcement', null, {
 
+        });
+        return {
+            query: function ()
+            {
+                return api.query().$promise;
+            }
+        }
     }
 
-    angular.module('exerciseApp').factory('AnnouncementDAO', [AnnouncementDAO]);
+    angular.module('exerciseApp').factory('AnnouncementDAO', ['$resource',AnnouncementDAO]);
 })();

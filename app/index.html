@@ -7,11 +7,27 @@
 </head>
 <body class="container">
 <div ng-controller="AnnouncementListCtrl as announcementList">
-
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in announcementList.announcements">
+            <th>{{item.id}}</th>
+            <th>{{item.title}}</th>
+            <th>{{item.description}}</th>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="app.js"></script>
 <script src="AnnouncementListCtrl.js"></script>
 <script src="AnnouncementDAO.js"></script>
